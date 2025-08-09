@@ -1,0 +1,220 @@
+/* Define color themes using CSS variables */
+:root {
+  --background-light: #f0f2f5;
+  --background-dark: #1a1a2e;
+  --card-bg-light: rgba(255, 255, 255, 0.6);
+  --card-bg-dark: rgba(26, 26, 46, 0.7);
+  --text-light: #1c1c1e;
+  --text-dark: #e4e6eb;
+  --primary-color: #6c63ff;
+  --primary-hover: #574de2;
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-dark: rgba(255, 255, 255, 0.2);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Apply themes based on a class on the body */
+body.light {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+body.dark {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+body.light .glass-card {
+  background: var(--card-bg-light);
+  border: 1px solid var(--border-light);
+}
+
+body.dark .glass-card {
+  background: var(--card-bg-dark);
+  border: 1px solid var(--border-dark);
+}
+
+.App {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  font-weight: 800;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr; /* Default to single column */
+  gap: 2rem;
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 992px) {
+  main {
+    grid-template-columns: 400px 1fr; /* Two columns on desktop */
+  }
+}
+
+/* Form Styles */
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.user-form h2 {
+  margin-top: 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.user-form input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: transparent;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box; /* Important for padding and width */
+}
+
+body.light .user-form input {
+  border-color: var(--border-light);
+  color: var(--text-light);
+}
+
+body.dark .user-form input {
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+.user-form input:focus {
+  border-color: var(--primary-color);
+}
+
+.user-form button {
+  padding: 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.user-form button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* List and Card Styles */
+.user-list h2 {
+  margin-top: 0;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.user-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.user-card {
+  position: relative; /* For positioning the delete button */
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+body.light .user-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-light);
+}
+
+body.dark .user-card {
+  background: rgba(26, 26, 46, 0.8);
+  border: 1px solid var(--border-dark);
+}
+
+.user-card h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+.user-card p {
+  margin: 0.5rem 0;
+  word-wrap: break-word;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ff4d4d;
+  transition: transform 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0;
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(15deg) scale(1.1);
+}
